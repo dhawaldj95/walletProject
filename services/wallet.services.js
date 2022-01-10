@@ -19,6 +19,13 @@ services.createWallet = async function (body) {
     };
 
     let result = await saveData(Wallet, input, true);
+    let output = {
+        balance: result.amount,
+        id: result._id,
+        name: result.user_name,
+        date: result.created_at
+
+    }
 
     // Create a entry in transactions logs
     let transactionalLog = {
@@ -30,10 +37,9 @@ services.createWallet = async function (body) {
     };
 
     let transactionResult = await saveData(WalletTransaction, transactionalLog, true)
-    console.log(transactionResult)
     return {
         status: 200,
-        body: result
+        body: output
     }
 };
 
@@ -75,7 +81,6 @@ services.transact = async function (body) {
             };
 
             let transactionResult = await saveData(WalletTransaction, transactionalLog, true);
-            console.log(transactionResult)
             return {
                 status: 200,
                 body: body
