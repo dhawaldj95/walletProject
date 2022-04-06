@@ -1,5 +1,4 @@
 # walletProject
-GOHIGHLEVEL - Backend Dev HIRING CHALLENGE 2
 
 To run this project we have to run a couple of commands
 
